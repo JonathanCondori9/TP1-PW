@@ -4,9 +4,6 @@ from flasgger import Swagger
 app = Flask(__name__)
 swagger = Swagger(app)
 
-
-# --- Base de Datos en Memoria ---
-
 productos = [
     {"id": 1, "nombre": "Muzzarella", "precio": 8000.0, "descripcion": "Clasica con salsa de tomate y muzzarella"},
     {"id": 2, "nombre": "Napolitana", "precio": 9500.0, "descripcion": "Muzzarella, rodajas de tomate y ajo"},
@@ -14,10 +11,7 @@ productos = [
     {"id": 4, "nombre": "Calabresa", "precio": 10500.0, "descripcion": "Muzzarella y longaniza"}
 ]
 
-# Ej: { 1: 2, 3: 1 } (Dos pizzas Muzzarella, una Fugazzetta)
 carrito = {}
-
-# --- Endpoints ---
 
 @app.get('/productos')
 def get_productos():
@@ -63,11 +57,9 @@ def agregar_al_carrito():
     prod_id = datos['id']
     cantidad = datos['cantidad']
 
-    # Validar que el producto existe
     if not any(p['id'] == prod_id for p in productos):
         return jsonify({"error": "Producto no encontrado"}), 404
 
-    # Si ya está en el carrito, sumar la cantidad; si no, inicializar
     if prod_id in carrito:
         carrito[prod_id] += cantidad
     else:
@@ -88,7 +80,6 @@ def get_carrito():
     total = 0.0
 
     for prod_id, cantidad in carrito.items():
-        # Buscar el producto en el catálogo
         producto = next((p for p in productos if p["id"] == prod_id), None)
         if producto:
             subtotal = producto["precio"] * cantidad
