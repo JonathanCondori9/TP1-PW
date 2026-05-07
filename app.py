@@ -48,7 +48,7 @@ def agregar_al_carrito():
       400:
         description: Faltan datos o error de validación
       404:
-        description: Producto no encontrado en el catálogo
+        description: Esta pizza no existe
     """
     datos = request.get_json()
     if not datos or 'id' not in datos:
