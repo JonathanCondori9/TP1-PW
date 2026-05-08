@@ -58,7 +58,7 @@ def agregar_al_carrito():
     cantidad = datos['cantidad']
 
     if not any(p['id'] == prod_id for p in productos):
-        return jsonify({"error": "Producto no encontrado"}), 404
+        return jsonify({"error": "Esta pizza no existe"}), 404
 
     if prod_id in carrito:
         carrito[prod_id] += cantidad
