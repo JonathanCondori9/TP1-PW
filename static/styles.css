@@ -1,0 +1,170 @@
+:root {
+    --primary: #FF5A5F;
+    --primary-hover: #E0484D;
+    --text-main: #222222;
+    --text-muted: #717171;
+    --bg-main: #F7F7F7;
+    --bg-card: #FFFFFF;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --border: #EBEBEB;
+    --sidebar-width: 380px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 { font-size: 1.5rem; font-weight: 700; }
+
+.cart-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cart-btn:hover { background-color: var(--primary-hover); }
+
+#cart-count {
+    background: white;
+    color: var(--primary);
+    padding: 0.1rem 0.4rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+main { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+
+.products-section h2 { margin-bottom: 1.5rem; font-size: 1.8rem; }
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content { padding: 1.5rem; }
+
+.card-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4; }
+.card-price { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+
+.add-btn {
+    width: 100%;
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-btn:hover { border-color: var(--text-main); }
+.add-btn.added { background-color: var(--primary); color: white; border-color: var(--primary); }
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: calc(-1 * var(--sidebar-width));
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-card);
+    box-shadow: -2px 0 12px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open { right: 0; }
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+.cart-items { flex: 1; overflow-y: auto; padding: 1.5rem; }
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.item-info h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+.item-info p { color: var(--text-muted); font-size: 0.9rem; }
+
+.del-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.sidebar-footer { padding: 1.5rem; border-top: 1px solid var(--border); }
+.total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+.checkout-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; }
+.checkout-btn:hover { background: var(--primary-hover); }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 900;
+    display: none;
+}
+
+.overlay.show { display: block; }

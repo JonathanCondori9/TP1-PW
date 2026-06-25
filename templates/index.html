@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Cart - Pizza Edition</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>🍕 Pizza Cart</h1>
+            <button id="carrito" class="cart-btn">
+                🛒 Carrito <span id="contador-carrito">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="products-section">
+            <h2>Nuestras Pizzas</h2>
+            <div id="products-grid" class="products-grid">
+                <!-- Se inyectarán dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidebar del Carrito -->
+    <aside id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Tu Pedido</h2>
+            <button id="cerrar-carrito" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Items del carrito -->
+        </div>
+        <div class="sidebar-footer">
+            <div class="total">
+                <span>Total:</span>
+                <span id="total-carrito">$0.00</span>
+            </div>
+            <button class="checkout-btn">Pagar</button>
+        </div>
+    </aside>
+
+    <div id="overlay" class="overlay"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
